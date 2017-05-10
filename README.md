@@ -1,4 +1,4 @@
-ThinkPHP 5.0
+﻿ThinkPHP 5.0
 ===============
 
 [![Total Downloads](https://poser.pugx.org/topthink/think/downloads)](https://packagist.org/packages/topthink/think)
@@ -126,6 +126,6 @@ All rights reserved。
 
 ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
 
-leeprince yangguang sunjie development.
+leeprince yangguang sunjie development...
 
 更多细节参阅 [LICENSE.txt](LICENSE.txt)
