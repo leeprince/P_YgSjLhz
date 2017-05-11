@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* 你自己的样式 */
+
+/* Sale controller*/
+div.sale_select_input input{
+    width:30px;
+}
+div.sale_intention_list input{
+    width: 120px;
+}
+.sale_slide{
+    width:120px;
+    height:50px;
+    border:1px solid #ccc;
+    position:fixed;
+    top:50%;
+    right:0;
+    text-align:center;
+    line-height:50px;
+}
+input.sale_input_date{
+    width:100px;
+}
+input.sale_input_memo{
+    width:500px;
+}
+.page-container .sale_style_input input{
+    width:80px;
+}
+table.sale_list_info{;
+    margin:50px auto 0;
+}
+.sale_fun_btn{
+    padding:50px;
+}
+article.sale_follow_edit_div>div{
+    display:block;
+    width:72%;
+    margin:0 auto 10px;
+}
+button.sale_follow_submit{
+    margin-top:20px;
+}
+article.sale_follow_padding{
+    padding-top:8%;
+}
+article.sale_follow_padding input{
+    width:120px;
+}
