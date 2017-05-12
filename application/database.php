@@ -19,7 +19,7 @@ return [
     // 用户名
     'username'        => 'ygsjlhz',
     // 密码
-    'password'        => 'ygsjlhz',
+    'password'        => 'ygsjlhzz',
     // 端口
     'hostport'        => '',
     // 连接dsn
