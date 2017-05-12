@@ -17,9 +17,9 @@ return [
     // 数据库名
     'database'        => 'p_ygsjlhz',
     // 用户名
-    'username'        => 'root',
+    'username'        => 'ygsjlhz',
     // 密码
-    'password'        => '',
+    'password'        => 'ygsjlhz',
     // 端口
     'hostport'        => '',
     // 连接dsn
