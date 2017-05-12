@@ -36,3 +36,43 @@ INSERT INTO `dev_auth_rule` VALUES ('12', '通知列表', null, 'N', '6', null, '201
 INSERT INTO `dev_auth_rule` VALUES ('13', '数据统计', null, 'N', '7', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
 INSERT INTO `dev_auth_rule` VALUES ('14', '答卷列表', null, 'N', '7', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
 INSERT INTO `dev_auth_rule` VALUES ('15', '公司简介', null, 'N', '2', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+
+
+
+
+
+======================孙捷==================0512==================产品管理表======================
+
+
+CREATE TABLE `NewTable` (
+`id`  int(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+`title`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品名称' ,
+`administrator`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '管理人' ,
+`establish_date`  date NULL DEFAULT NULL COMMENT '成立日期' ,
+`type`  enum('3','2','1') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品状态：1.募集中 2.存续 3.退出' ,
+`product_deadline`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品期限' ,
+`currency`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '币种' ,
+`investment_scope`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '投资范围' ,
+`trusteeship_body`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '托管机构' ,
+`subscription_fee`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '认购费' ,
+`redemption_fee`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '赎回费' ,
+`management_fee`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '管理费' ,
+`trust_fee`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '托管费' ,
+`outsourcing_service_fee`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '外包服务费' ,
+PRIMARY KEY (`id`)
+)
+ENGINE=MyISAM
+COMMENT='产品管理'
+CHECKSUM=0
+DELAY_KEY_WRITE=0
+;
+
+ALTER TABLE `dev_product`
+CHANGE COLUMN `type` `status`  enum('3','2','1') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品状态：1.募集中 2.存续 3.退出' AFTER `establish_date`;
+
+ALTER TABLE `dev_product`
+ADD COLUMN `createtime`  datetime NULL DEFAULT NULL COMMENT '创建时间' AFTER `outsourcing_service_fee`,
+ADD COLUMN `updatetime`  datetime NULL DEFAULT NULL COMMENT '更新时间' AFTER `createtime`;
+
+
+

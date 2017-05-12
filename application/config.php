@@ -141,6 +141,7 @@ return [
     // 视图输出字符串内容替换
     'view_replace_str'       => [
         '__PUBLIC__'=>'/static',
+        '__URL__'=>'index.php/index',
         '__ROOT__' => '/',
     ],
     // 默认跳转页面对应的模板文件

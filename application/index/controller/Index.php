@@ -1,20 +1,19 @@
 <?php
 namespace app\index\controller;
-use app\index\model\AuthRule;
+use app\index\model\AuthRuleModel;
 use app\index\model\User;
+use think\Controller;
 use think\View;
 
-class Index extends \think\Controller
+class Index extends Controller
 {
     public function index()
     {
-        $model_rule = new AuthRule();
+        $model_rule = new AuthRuleModel();
         $map = array();
-        $map['is_menu'] = AuthRule::IS_MENU;
+        $map['is_menu'] = AuthRuleModel::IS_MENU;
         $rule_list = $model_rule->getRuleList($map);
         $this->assign("rule_list",$rule_list);
-//        dump($rule_list[1]['child']);die;
-//        dump($rule_list[1]['child']);die;
         return $this->fetch();
     }
 

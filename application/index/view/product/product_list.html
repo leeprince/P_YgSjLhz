@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    {include file="public/_meta"}
+    <title>客户列表</title>
+</head>
+<body>
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span> 产品管理
+    <span class="c-gray en">&gt;</span> 产品列表
+    <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+<div class="page-container">
+    <form method="post" action="" id="order_list_form" onsubmit="layer.load(3);">
+        <table style="text-align:left;">
+            <tr style="width:100px;height:45px;f">
+                <td style="width:1%;text-align:right;padding-right:10px;">
+                    产品状态：
+                </td>
+                <td style="width:1%;padding-right:10px;">
+                    <span class="select-box inline" style="width:100%;border-radius:4px;">
+                        <select name="status" class="select" style="width:100%;">
+                            <option value="">请选择产品状态</option>
+                            <option value="1" <?php if($status == 1) echo 'selected' ?>>募集中</option>
+                            <option value="2" <?php if($status == 2) echo 'selected' ?>>续存</option>
+                            <option value="3" <?php if($status == 3) echo 'selected' ?>>退出</option>
+                        </select>
+                    </span>
+                </td>
+                <td style="width:5%;">
+                    <span><input type="text" value="{$title}" name="title" class="input-text" style="width:50%;border-radius:4px;" placeholder="请输入产品名称搜索"></span>
+                </td>
+            </tr>
+        </table>
+        <button style="display:none;" name="btn_search" class="btn btn-success" id="product_list_sreach"><i class="Hui-iconfont">&#xe665;</i> 查询</button>
+    </form>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+        <span class="l">
+            <a class="btn btn-primary radius" data-title="添加产品" _href="__URL__/product/product_add" onclick="order_edit('创建订单','__URL__/product/product_add','10001')" href="javascript:void(0);">
+                <i class="Hui-iconfont">&#xe600;</i> 添加产品
+            </a>
+        </span>
+    </div>
+    <div class="mt-20">
+        <table class="table table-border table-bordered table-bg table-hover table-sort">
+            <thead>
+            <tr class="text-c">
+                <th width="100">产品名称</th>
+                <th width="100">产品状态</th>
+                <th width="200">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach($product_list as $key=>$product){ ?>
+                <tr class="text-c">
+                    <td>{$product.title}</td>
+                    <td>{$product.status_str}</td>
+                    <td>
+                        <span style="border-right: 1px solid #000;">
+                            <a class="ml-5" style="padding-right:50px;" onClick="product_detail('产品详情','__URL__Order/order_supplement_save','','100%','100%')" href="javascript:" title="产品详情">查看</a>
+                        </span>
+                        <span style="border-right: 1px solid #000;">
+                            <a class="ml-5" style="padding-left:50px;padding-right:50px;" onClick="product_save('产品修改','__URL__Order/order_supplement_save','','100%','100%')" href="javascript:" title="产品修改">修改</a>
+                        </span>
+                        <span>
+                            <a class="ml-5" style="padding-left:50px;" onClick="product_delete('产品删除','__URL__Order/order_supplement_save','','100%','100%')" href="javascript:" title="基本信息">删除</a>
+                        </span>
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+{include file="public/_footer" /}
+<script type="text/javascript">
+    $('.table-sort').dataTable();
+
+    function product_detail(title,url,id,w,h){
+        var index = layer.open({
+            type: 2,
+            title: title,
+            content: url
+        });
+        layer.full(index);
+    }
+
+    function product_save(title,url,id,w,h){
+        var index = layer.open({
+            type: 2,
+            title: title,
+            content: url
+        });
+        layer.full(index);
+    }
+
+    function product_delete(){
+        layer.confirm('确定要删除吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            layer.msg('的确很重要', {icon: 1});
+        }, function(){
+            layer.msg('也可以这样', {
+                time: 20000, //20s后自动关闭
+                btn: ['明白了', '知道了']
+            });
+        });
+    }
+
+    $(function () {
+        $("body").keydown(function (event) {
+            if (event.which == "13") {
+                $("#product_list_sreach").click();
+            }
+        });
+    });
+
+</script>
+</body>
+</html>
