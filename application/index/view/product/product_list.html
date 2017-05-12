@@ -37,7 +37,7 @@
     </form>
     <div class="cl pd-5 bg-1 bk-gray mt-20">
         <span class="l">
-            <a class="btn btn-primary radius" data-title="添加产品" _href="__URL__/product/product_add" onclick="order_edit('创建订单','__URL__/product/product_add','10001')" href="javascript:void(0);">
+            <a class="btn btn-primary radius" data-title="添加产品" onclick="product_add('创建产品','product_add','','100%','100%')" href="javascript:void(0);">
                 <i class="Hui-iconfont">&#xe600;</i> 添加产品
             </a>
         </span>
@@ -58,13 +58,13 @@
                     <td>{$product.status_str}</td>
                     <td>
                         <span style="border-right: 1px solid #000;">
-                            <a class="ml-5" style="padding-right:50px;" onClick="product_detail('产品详情','__URL__Order/order_supplement_save','','100%','100%')" href="javascript:" title="产品详情">查看</a>
+                            <a class="ml-5" style="padding-right:50px;" onClick="product_detail('产品详情','product_detail','','100%','100%')" href="javascript:" title="产品详情">查看</a>
                         </span>
                         <span style="border-right: 1px solid #000;">
-                            <a class="ml-5" style="padding-left:50px;padding-right:50px;" onClick="product_save('产品修改','__URL__Order/order_supplement_save','','100%','100%')" href="javascript:" title="产品修改">修改</a>
+                            <a class="ml-5" style="padding-left:50px;padding-right:50px;" onClick="product_save('产品修改','product_save','','100%','100%')" href="javascript:" title="产品修改">修改</a>
                         </span>
                         <span>
-                            <a class="ml-5" style="padding-left:50px;" onClick="product_delete('产品删除','__URL__Order/order_supplement_save','','100%','100%')" href="javascript:" title="基本信息">删除</a>
+                            <a style="padding-left:50px;" class="ml-5" onclick="product_delete()" href="javascript:;" title="产品删除">删除</a>
                         </span>
                     </td>
                 </tr>
@@ -77,11 +77,26 @@
 <script type="text/javascript">
     $('.table-sort').dataTable();
 
+    function product_add(title,url,id,w,h){
+        var index = layer.open({
+            type: 2,
+            title: title,
+            content: url,
+            end: function () {
+                location.reload();
+            }
+        });
+        layer.full(index);
+    }
+
     function product_detail(title,url,id,w,h){
         var index = layer.open({
             type: 2,
             title: title,
-            content: url
+            content: url,
+            end: function () {
+                location.reload();
+            }
         });
         layer.full(index);
     }
@@ -90,7 +105,10 @@
         var index = layer.open({
             type: 2,
             title: title,
-            content: url
+            content: url,
+            end: function () {
+                location.reload();
+            }
         });
         layer.full(index);
     }

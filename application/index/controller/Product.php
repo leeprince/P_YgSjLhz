@@ -2,6 +2,7 @@
 namespace app\index\controller;
 use app\index\model\ProductModel;
 use think\Controller;
+use think\Request;
 use think\View;
 
 class Product extends Controller
@@ -26,5 +27,15 @@ class Product extends Controller
         $this->assign("title",$title);
         $this->assign("product_list",$product_list);
         return $this->fetch();
+    }
+
+
+    public function product_add(){
+        $model = new ProductModel();
+        if(Request::instance()->isPost()){
+
+        }else{
+            return $this->fetch();
+        }
     }
 }
