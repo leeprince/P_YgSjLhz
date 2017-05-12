@@ -1,0 +1,38 @@
+===========================孙捷===========================0512======左导航信息===
+
+CREATE TABLE `dev_auth_rule` (
+`id`  int(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+`name`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '导航名称' ,
+`url`  varchar(255) NULL DEFAULT NULL COMMENT '跳转链接' ,
+`is_menu`  enum('') NULL ,
+`pid`  int(10) NULL COMMENT '父级ID' ,
+`icon`  varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图标编码' ,
+`createtime`  datetime NULL COMMENT '创建时间' ,
+`updatetime`  datetime NULL COMMENT '更新时间' ,
+PRIMARY KEY (`id`)
+)
+COMMENT='左导航信息'
+;
+
+
+ALTER TABLE `dev_auth_rule`
+MODIFY COLUMN `is_menu`  enum('Y','N') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `url`;
+
+ALTER TABLE `dev_auth_rule`
+CHANGE COLUMN `url` `iframe_url`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '跳转链接' AFTER `name`;
+
+INSERT INTO `dev_auth_rule` VALUES ('1', '应用管理', null, 'Y', '0', '&#xe62e;', '2017-05-12 15:26:39', '2017-05-12 15:26:41');
+INSERT INTO `dev_auth_rule` VALUES ('2', '公司简介', '', 'Y', '0', '&#xe616;', '2017-05-12 15:27:32', '2017-05-12 15:27:34');
+INSERT INTO `dev_auth_rule` VALUES ('3', '客户管理', null, 'Y', '0', '&#xe60d;', '2017-05-12 15:28:03', '2017-05-12 15:28:06');
+INSERT INTO `dev_auth_rule` VALUES ('4', '产品管理', '', 'Y', '0', '&#xe620;', '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('5', '新闻管理', '', 'Y', '0', '&#xe616;', '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('6', '通知管理', '', 'Y', '0', '&#xe622;', '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('7', '投票调研', null, 'Y', '0', '&#xe61a;', '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('8', '应用设置', null, 'N', '1', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('9', '客户列表', null, 'N', '3', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('10', '产品列表', null, 'N', '4', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('11', '新闻列表', null, 'N', '5', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('12', '通知列表', null, 'N', '6', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('13', '数据统计', null, 'N', '7', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('14', '答卷列表', null, 'N', '7', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('15', '公司简介', null, 'N', '2', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
