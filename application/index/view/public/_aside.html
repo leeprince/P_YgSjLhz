@@ -1,0 +1,18 @@
+<aside class="Hui-aside">
+    <input id="divScrollValue" type="hidden" value="" />
+    <div class="menu_dropdown bk_2">
+        <?php foreach($rule_list as $key=>$rule){ ?>
+            <dl id="menu-system">
+                <dt><i class="Hui-iconfont">{$rule.icon}</i> {$rule.name}<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+                <dd>
+                    <ul>
+                        <?php foreach($rule['child'] as $k=>$v){ ?>
+                            <li><a _href="{$v.iframe_url}" data-title="{$v.name}" href="javascript:void(0)">{$v.name}</a></li>
+                        <?php } ?>
+                    </ul>
+                </dd>
+            </dl>
+        <?php } ?>
+    </div>
+</aside>
+<div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
