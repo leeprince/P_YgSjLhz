@@ -7,6 +7,12 @@ use think\View;
 
 class Index extends Controller
 {
+    /**
+     * 首页
+     * @return mixed
+     * @auth sunjie
+     * @time 2017-05-11
+     */
     public function index()
     {
         $model_rule = new AuthRuleModel();
@@ -17,6 +23,12 @@ class Index extends Controller
         return $this->fetch();
     }
 
+    /**
+     * 欢迎页
+     * @return mixed
+     * @auth sunjie
+     * @time 2017-05-11
+     */
     public function welcome()
     {
         $model_user = new User();

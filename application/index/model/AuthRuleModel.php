@@ -12,6 +12,8 @@ class AuthRuleModel extends Model
      * 获取左导航列表
      * @param $map
      * @return false|\PDOStatement|string|\think\Collection
+     * @auth sunjie
+     * @time 2017-05-12
      */
     public function getRuleList($map)
     {

@@ -1,10 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    {include file="public/_meta"}
+    <title>创建产品</title>
+    <style>
+        .labels{
+            width:110px !important;
+            margin-top:3px;
+            padding-right:0;
+            float:left;
+            text-align:right;
+        }
+        .block{
+            width:85%;
+            margin-left:15%;
+        }
+        .in_block{
+            width:30%;
+            float:left;
+        }
+    </style>
 </head>
 <body>
-123
+<div class="pd-20">
+    <div class="row cl block" style="margin-top:40px;">
+        <label class="form-label col-2 labels"><span class="c-red">*</span>产品名称：</label>
+        <div class="formControls col-4 in_block">
+            <input type="text" class="input-text" placeholder="请输入产品名称（20字内）" id="title" maxlength="20" />
+        </div>
+        <label class="form-label col-2 labels"><span class="c-red">*</span>产品状态：</label>
+        <div class="formControls col-10 in_block">
+            <input name="status" type="radio" value="1" style="margin-top:3px;cursor:pointer;" checked="checked" /> 募集中
+            <input name="status" type="radio" value="2" style="margin-top:3px;margin-left:20px;cursor:pointer;" /> 存续
+            <input name="status" type="radio" value="3" style="margin-top:3px;margin-left:20px;cursor:pointer;" /> 退出
+        </div>
+    </div>
+    <div class="row cl block" style="margin-top:30px;">
+        <label class="form-label col-2 labels"><span class="c-red">*</span>成立日期：</label>
+        <div class="formControls col-10 in_block">
+            <input type="text" placeholder="请选择成立日期" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="establish_date" class="input-text Wdate">
+        </div>
+        <label class="form-label col-2 labels"><span class="c-red">*</span>管理人：</label>
+        <div class="formControls col-4 in_block">
+            <input type="text" class="input-text" placeholder="请输入管理人（20字内）" id="administrator" maxlength="20" />
+        </div>
+    </div>
+    <div class="row cl block" style="margin-top:30px;">
+        <label class="form-label col-2 labels"><span class="c-red">*</span>产品期限：</label>
+        <div class="formControls col-4 in_block">
+            <input type="text" class="input-text" placeholder="请输入产品期限" id="product_deadline" />
+        </div>
+        <label class="form-label col-2 labels"><span class="c-red">*</span>币种：</label>
+        <div class="formControls col-4 in_block">
+            <input type="text" class="input-text" placeholder="请输入币种（20字内）" id="currency" maxlength="20" />
+        </div>
+    </div>
+    <div class="row cl block" style="margin-top:30px;">
+        <label class="form-label col-2 labels"><span class="c-red">*</span>投资范围：</label>
+        <div class="formControls col-4 in_block">
+            <input type="text" class="input-text" placeholder="请输入投资范围" id="investment_scope" />
+        </div>
+        <label class="form-label col-2 labels">托管机构：</label>
+        <div class="formControls col-4 in_block">
+            <input type="text" class="input-text" placeholder="请输入托管机构（20字内）" id="trusteeship_body" maxlength="20" />
+        </div>
+    </div>
+    <div class="row cl block" style="margin-top:30px;">
+        <label class="form-label col-2 labels"><span class="c-red">*</span>认购费：</label>
+        <div class="formControls col-4 in_block">
+            <input type="text" class="input-text" placeholder="请输入认购费" id="subscription_fee" />
+        </div>
+        <label class="form-label col-2 labels"><span class="c-red">*</span>赎回费：</label>
+        <div class="formControls col-4 in_block">
+            <input type="text" class="input-text" placeholder="请输入赎回费" id="redemption_fee" />
+        </div>
+    </div>
+    <div class="row cl block" style="margin-top:30px;">
+        <label class="form-label col-2 labels"><span class="c-red">*</span>管理费：</label>
+        <div class="formControls col-4 in_block">
+            <input type="text" class="input-text" placeholder="请输入管理费" id="management_fee" />
+        </div>
+        <label class="form-label col-2 labels">托管费：</label>
+        <div class="formControls col-4 in_block">
+            <input type="text" class="input-text" placeholder="请输入托管费" id="trust_fee" />
+        </div>
+    </div>
+    <div class="row cl block" style="margin-top:30px;">
+        <label class="form-label col-2 labels">外包服务费：</label>
+        <div class="formControls col-4 in_block">
+            <input type="text" class="input-text" placeholder="请输入外包服务费" id="outsourcing_service_fee" />
+        </div>
+    </div>
+    <div class="row cl" style="margin-top:80px;margin-left:30%;">
+        <div class="col-10 col-offset-2">
+            <button class="btn btn-primary radius" id="save_file" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
+            <button class="btn btn-primary radius" onclick="layer_close()" type="button" style="margin-left:10px;"> 返回</button>
+        </div>
+    </div>
+</div>
+{include file="public/_footer" /}
+<script type="text/javascript">
+    $(document).ready(function(){
+        var index = parent.layer.getFrameIndex(window.name);
+        $("#save_file").click(function(){
+            var title = $("#title").val();
+            var status = $("input[name='status']").val();
+            var establish_date = $("#establish_date").val();
+            var administrator = $("#administrator").val();
+            var product_deadline = $("#product_deadline").val();
+            var currency = $("#currency").val();
+            var investment_scope = $("#investment_scope").val();
+            var trusteeship_body = $("#trusteeship_body").val();
+            var subscription_fee = $("#subscription_fee").val();
+            var redemption_fee = $("#redemption_fee").val();
+            var management_fee = $("#management_fee").val();
+            var trust_fee = $("#trust_fee").val();
+            var outsourcing_service_fee = $("#outsourcing_service_fee").val();
+            if(title == '' ||
+                status == '' ||
+                establish_date == '' ||
+                administrator == '' ||
+                product_deadline == '' ||
+                currency == '' ||
+                investment_scope == '' ||
+                subscription_fee == '' ||
+                redemption_fee == '' ||
+                management_fee == ''
+            ){
+                layer.msg('必填项不可为空',{icon:2,time:2000});
+            }else{
+                var url = 'product_add';
+                $.post(url,{
+                    title:title,
+                    status:status,
+                    establish_date:establish_date,
+                    administrator:administrator,
+                    product_deadline:product_deadline,
+                    currency:currency,
+                    investment_scope:investment_scope,
+                    trusteeship_body:trusteeship_body,
+                    subscription_fee:subscription_fee,
+                    redemption_fee:redemption_fee,
+                    management_fee:management_fee,
+                    trust_fee:trust_fee,
+                    outsourcing_service_fee:outsourcing_service_fee
+                },function(rt){
+                    if(rt){
+                        if(rt.code == 200){
+                            layer.msg('添加成功',{icon:1,time:1000},function(){
+                                parent.location.reload();
+                                parent.layer.close(index);
+                            })
+                        }else{
+                            layer.msg(rt.msg,{icon:2,time:2000})
+                        }
+                    }else{
+                        layer.msg('添加失败，请重试',{icon:2,time:2000});
+                    }
+                },'json');
+            }
+        });
+
+    })
+</script>
 </body>
 </html>
