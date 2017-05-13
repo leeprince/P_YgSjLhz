@@ -1,10 +1,149 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    {include file="public/_meta"}
+    <title>产品详情</title>
+    <style>
+        .labels{
+            width:110px !important;
+            margin-top:3px;
+            padding-right:0;
+            float:left;
+            text-align:right;
+        }
+        .block{
+            width:85%;
+            margin-left:15%;
+        }
+        .in_block{
+            width:30%;
+            float:left;
+        }
+        .border{
+            width:85%;
+            margin-left: 5%;
+            padding-bottom: 20px;
+            border:1px solid rgb(204,204,204);
+        }
+        .box_shadow{
+            margin-top: 20px;
+            width:90%;
+            padding:15px 0;
+            margin-left: 5%;
+            box-shadow: 2px 2px 2px #ccc,-2px -2px 2px #ccc;
+        }
+        .btn-primary{
+            background-color: rgb(180,39,50);
+            border-color:rgb(180,38,50);
+        }
+        .btn-primary:hover{
+            opacity: .8;
+            background-color: rgb(180,39,50);
+            border-color:rgb(180,38,50);
+        }
+        .detail_span_position{
+            position:relative;
+            top:3px;
+        }
+    </style>
 </head>
 <body>
+<input type="hidden" value="{$id}" id="product_id">
+<div class="pd-20">
+    <div class="border">
+        <div class="box_shadow">
+            <div class="row cl block" style="margin-top:40px;">
+                <label class="form-label col-2 labels">产品名称：</label>
+                <div class="formControls col-4 in_block">
+                    <span class="detail_span_position">{$product_detail.title}</span>
+                </div>
+                <label class="form-label col-2 labels">产品状态：</label>
+                <div class="formControls col-10 in_block">
+                    <span class="detail_span_position">{$product_detail.status_str}</span>
+                </div>
+            </div>
+            <div class="row cl block" style="margin-top:30px;">
+                <label class="form-label col-2 labels">成立日期：</label>
+                <div class="formControls col-10 in_block">
+                    <span class="detail_span_position">{$product_detail.establish_date}</span>
+                </div>
+                <label class="form-label col-2 labels">管理人：</label>
+                <div class="formControls col-4 in_block">
+                    <span class="detail_span_position">{$product_detail.administrator}</span>
+                </div>
+            </div>
+            <div class="row cl block" style="margin-top:30px;">
+                <label class="form-label col-2 labels">产品期限：</label>
+                <div class="formControls col-4 in_block">
+                    <span class="detail_span_position">{$product_detail.product_deadline}</span>
+                </div>
+                <label class="form-label col-2 labels">币种：</label>
+                <div class="formControls col-4 in_block">
+                    <span class="detail_span_position">{$product_detail.currency}</span>
+                </div>
+            </div>
+            <div class="row cl block" style="margin-top:30px;">
+                <label class="form-label col-2 labels">投资范围：</label>
+                <div class="formControls col-4 in_block">
+                    <span class="detail_span_position">{$product_detail.investment_scope}</span>
+                </div>
+                <label class="form-label col-2 labels">托管机构：</label>
+                <div class="formControls col-4 in_block">
+                    <span class="detail_span_position">{$product_detail.trusteeship_body}</span>
+                </div>
+            </div>
+        </div>
+        <div class="box_shadow">
+            <div class="row cl block" style="margin-top:30px;">
+                <label class="form-label col-2 labels">认购费：</label>
+                <div class="formControls col-4 in_block">
+                    <span class="detail_span_position">{$product_detail.subscription_fee}</span>
+                </div>
+                <label class="form-label col-2 labels">赎回费：</label>
+                <div class="formControls col-4 in_block">
+                    <span class="detail_span_position">{$product_detail.redemption_fee}</span>
+                </div>
+            </div>
+            <div class="row cl block" style="margin-top:30px;">
+                <label class="form-label col-2 labels">管理费：</label>
+                <div class="formControls col-4 in_block">
+                    <span class="detail_span_position">{$product_detail.management_fee}</span>
+                </div>
+                <label class="form-label col-2 labels">托管费：</label>
+                <div class="formControls col-4 in_block">
+                    <span class="detail_span_position">{$product_detail.trust_fee}</span>
+                </div>
+            </div>
+            <div class="row cl block" style="margin-top:30px;">
+                <label class="form-label col-2 labels">外包服务费：</label>
+                <div class="formControls col-4 in_block">
+                    <span class="detail_span_position">{$product_detail.outsourcing_service_fee}</span>
+                </div>
+            </div>
+            <div class="row cl" style="margin-top:80px;margin-left:30%;">
+                <div class="col-10 col-offset-2">
+                    <button class="btn btn-primary radius" onClick="product_save('产品修改','product_save','{$id}','100%','100%')" href="javascript:" type="button"><i class="Hui-iconfont">&#xe6df;</i> 修改</button>
+                    <button class="btn btn-primary radius" onclick="layer_close()" type="button" style="margin-left:10px;"> 返回</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/_footer" /}
+<script type="text/javascript">
 
+    function product_save(title,url,id,w,h){
+        var index = layer.open({
+            type: 2,
+            title: title,
+            content: url + '?id=' + id,
+            end: function () {
+                location.reload();
+            }
+        });
+        layer.full(index);
+    }
+
+</script>
 </body>
 </html>

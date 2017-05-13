@@ -92,6 +92,9 @@ class ProductModel extends Model
      */
     public function getOne($map){
         $product_detail = db($this->tableName)->where($map)->find();
+        if($product_detail){
+            $product_detail['status_str'] = self::getStatus($product_detail['status']);
+        }
         return $product_detail;
     }
 

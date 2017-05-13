@@ -58,7 +58,7 @@
                     <td>{$product.status_str}</td>
                     <td>
                         <span style="border-right: 1px solid #000;">
-                            <a class="ml-5" style="padding-right:50px;" onClick="product_detail('产品详情','product_detail','','100%','100%')" href="javascript:" title="产品详情">查看</a>
+                            <a class="ml-5" style="padding-right:50px;" onClick="product_detail('产品详情','product_detail','{$product.id}','100%','100%')" href="javascript:" title="产品详情">查看</a>
                         </span>
                         <span style="border-right: 1px solid #000;">
                             <a class="ml-5" style="padding-left:50px;padding-right:50px;" onClick="product_save('产品修改','product_save','{$product.id}','100%','100%')" href="javascript:" title="产品修改">修改</a>
@@ -97,7 +97,7 @@
         var index = layer.open({
             type: 2,
             title: title,
-            content: url,
+            content: url + '?id=' + id,
             end: function () {
                 location.reload();
             }
@@ -129,16 +129,20 @@
                 if(rt){
                     if(rt.code == 200){
                         layer.msg(rt.msg,{icon:1,time:1000},function(){
+                            layer_close(load);
                             location.reload();
                         })
                     }else{
-                        layer.msg(rt.msg,{icon:2,time:2000});
+                        layer.msg(rt.msg,{icon:2,time:2000},function(){
+                            layer_close(load);
+                        });
                     }
                 }else{
-                    layer.msg("删除失败",{icon:2,time:2000})
+                    layer.msg("删除失败",{icon:2,time:2000},function(){
+                        layer_close(load);
+                    })
                 }
             },'json');
-            layer_close(load);
         }, function(){
 
         });

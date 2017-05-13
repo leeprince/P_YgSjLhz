@@ -2,7 +2,7 @@
 <html>
 <head>
     {include file="public/_meta"}
-    <title>创建产品</title>
+    <title>修改产品</title>
     <style>
         .labels{
             width:110px !important;
@@ -180,17 +180,21 @@
                     if(rt){
                         if(rt.code == 200){
                             layer.msg(rt.msg,{icon:1,time:1000},function(){
+                                layer_close(load);
                                 parent.location.reload();
                                 parent.layer.close(index);
                             })
                         }else{
-                            layer.msg(rt.msg,{icon:2,time:2000})
+                            layer.msg(rt.msg,{icon:2,time:2000},function(){
+                                layer_close(load);
+                            })
                         }
                     }else{
-                        layer.msg('修改失败，请重试',{icon:2,time:2000});
+                        layer.msg('修改失败，请重试',{icon:2,time:2000},function(){
+                            layer_close(load);
+                        });
                     }
                 },'json');
-                layer_close(load);
             }
         });
 

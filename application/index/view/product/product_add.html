@@ -12,10 +12,11 @@
             text-align:right;
         }
         .block{
-            width:100%;
+            width:85%;
+            margin-left:15%;
         }
         .in_block{
-            width:35%;
+            width:30%;
             float:left;
         }
         .border{
@@ -43,10 +44,10 @@
     </style>
 </head>
 <body>
-<div class="pd-20" style="padding:10px">
+<div class="pd-20">
     <div class="border">
       <div class="box_shadow">
-        <div class="row cl block" style="margin-top:10px;">
+        <div class="row cl block" style="margin-top:40px;">
             <label class="form-label col-2 labels"><span class="c-red">*</span>产品名称：</label>
             <div class="formControls col-4 in_block">
                 <input type="text" class="input-text" placeholder="请输入产品名称（20字内）" id="title" maxlength="20" />
@@ -90,37 +91,37 @@
         </div>
      </div>
      <div class="box_shadow">
-    <div class="row cl block" style="margin-top:10px;">
-        <label class="form-label col-2 labels"><span class="c-red">*</span>认购费：</label>
-        <div class="formControls col-4 in_block">
-            <input type="text" class="input-text" placeholder="请输入认购费" id="subscription_fee" />
-        </div>
-        <label class="form-label col-2 labels"><span class="c-red">*</span>赎回费：</label>
-        <div class="formControls col-4 in_block">
-            <input type="text" class="input-text" placeholder="请输入赎回费" id="redemption_fee" />
-        </div>
-    </div>
-    <div class="row cl block" style="margin-top:30px;">
-        <label class="form-label col-2 labels"><span class="c-red">*</span>管理费：</label>
-        <div class="formControls col-4 in_block">
-            <input type="text" class="input-text" placeholder="请输入管理费" id="management_fee" />
-        </div>
-        <label class="form-label col-2 labels">托管费：</label>
-        <div class="formControls col-4 in_block">
-            <input type="text" class="input-text" placeholder="请输入托管费" id="trust_fee" />
-        </div>
-    </div>
-    <div class="row cl block" style="margin-top:30px;">
-        <label class="form-label col-2 labels">外包服务费：</label>
-        <div class="formControls col-4 in_block">
-            <input type="text" class="input-text" placeholder="请输入外包服务费" id="outsourcing_service_fee" />
-        </div>
-    </div>
-    </div>
-    <div class="row cl" style="margin-top:30px;margin-left:20%;">
-        <div class="col-10 col-offset-2">
-            <button class="btn btn-primary radius" id="save_file" type="button"><i class="Hui-iconfont">&#xe632;</i> 创建</button>
-            <button class="btn btn-primary radius" onclick="layer_close()" type="button" style="margin-left:10px;"> 返回</button>
+	    <div class="row cl block" style="margin-top:30px;">
+	        <label class="form-label col-2 labels"><span class="c-red">*</span>认购费：</label>
+	        <div class="formControls col-4 in_block">
+	            <input type="text" class="input-text" placeholder="请输入认购费" id="subscription_fee" />
+	        </div>
+	        <label class="form-label col-2 labels"><span class="c-red">*</span>赎回费：</label>
+	        <div class="formControls col-4 in_block">
+	            <input type="text" class="input-text" placeholder="请输入赎回费" id="redemption_fee" />
+	        </div>
+	    </div>
+	    <div class="row cl block" style="margin-top:30px;">
+	        <label class="form-label col-2 labels"><span class="c-red">*</span>管理费：</label>
+	        <div class="formControls col-4 in_block">
+	            <input type="text" class="input-text" placeholder="请输入管理费" id="management_fee" />
+	        </div>
+	        <label class="form-label col-2 labels">托管费：</label>
+	        <div class="formControls col-4 in_block">
+	            <input type="text" class="input-text" placeholder="请输入托管费" id="trust_fee" />
+	        </div>
+	    </div>
+	    <div class="row cl block" style="margin-top:30px;">
+	        <label class="form-label col-2 labels">外包服务费：</label>
+	        <div class="formControls col-4 in_block">
+	            <input type="text" class="input-text" placeholder="请输入外包服务费" id="outsourcing_service_fee" />
+	        </div>
+	    </div>
+    	<div class="row cl" style="margin-top:80px;margin-left:30%;">
+    		<div class="col-10 col-offset-2">
+	            <button class="btn btn-primary radius" id="save_file" type="button"><i class="Hui-iconfont">&#xe632;</i> 创建</button>
+	            <button class="btn btn-primary radius" onclick="layer_close()" type="button" style="margin-left:10px;"> 返回</button>
+			</div>
         </div>
     </div>
  </div>
@@ -176,20 +177,23 @@
                     if(rt){
                         if(rt.code == 200){
                             layer.msg(rt.msg,{icon:1,time:1000},function(){
+                                layer_close(load);
                                 parent.location.reload();
                                 parent.layer.close(index);
                             })
                         }else{
-                            layer.msg(rt.msg,{icon:2,time:2000})
+                            layer.msg(rt.msg,{icon:2,time:2000},function(){
+                                layer_close(load);
+                            })
                         }
                     }else{
-                        layer.msg('添加失败，请重试',{icon:2,time:2000});
+                        layer.msg('添加失败，请重试',{icon:2,time:2000},function(){
+                            layer_close(load);
+                        });
                     }
                 },'json');
-                layer_close(load);
             }
         });
-
     })
 </script>
 </body>

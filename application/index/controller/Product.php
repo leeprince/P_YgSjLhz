@@ -130,6 +130,23 @@ class Product extends Controller
     }
 
     /**
+     * 产品详情
+     * @return mixed
+     * @auth sunjie
+     * @time 2017-05-13
+     */
+    public function product_detail(){
+        $model = new ProductModel();
+        $id = input("get.id");
+        $map = array();
+        $map['id'] = $id;
+        $product_detail = $model->getOne($map);
+        $this->assign("product_detail",$product_detail);
+        $this->assign("id",$id);
+        return $this->fetch();
+    }
+
+    /**
      * 删除产品
      * @return mixed
      * @auth sunjie
