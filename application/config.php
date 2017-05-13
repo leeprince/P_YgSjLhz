@@ -248,15 +248,15 @@ return [
     // +----------------------------------------------------------------------
     'captcha'  => [
             // 验证码字符集合
-            'codeSet'  => '2345678abcdefhijkmnpqrstuvwxyzABCDEFGHJKLMNPQRTUVWXY',  
+            'codeSet'  => 'ABCDEFGHJKLMNPQRTUVWXYZ',  
            // 验证码字体大小(px)
-           'fontSize' => 12, 
+           'fontSize' => 15, 
            // 是否画混淆曲线
-           'useCurve' => true, 
+           'useCurve' =>  false, 
              // 验证码图片高度
             'imageH'   => 30,
             // 验证码图片宽度
-            'imageW'   => 100, 
+            'imageW'   => 120, 
             // 验证码位数
             'length'   => 5, 
             // 验证成功后是否重置        
