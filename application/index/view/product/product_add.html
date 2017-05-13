@@ -12,60 +12,85 @@
             text-align:right;
         }
         .block{
-            width:85%;
-            margin-left:15%;
+            width:100%;
         }
         .in_block{
-            width:30%;
+            width:35%;
             float:left;
+        }
+        .border{
+            width:85%;
+            margin-left: 5%;
+            padding-bottom: 20px;
+            border:1px solid rgb(204,204,204);
+        }
+        .box_shadow{
+            margin-top: 20px;
+            width:90%;
+            padding:15px 0;
+            margin-left: 5%;
+            box-shadow: 2px 2px 2px #ccc,-2px -2px 2px #ccc;
+        }
+        .btn-primary{
+            background-color: rgb(180,38,50);
+            border-color:rgb(180,38,50);
+        }
+        .btn-primary:hover{
+            opacity: .8;
+            background-color: rgb(180,38,50);
+            border-color:rgb(180,38,50);
         }
     </style>
 </head>
 <body>
-<div class="pd-20">
-    <div class="row cl block" style="margin-top:40px;">
-        <label class="form-label col-2 labels"><span class="c-red">*</span>产品名称：</label>
-        <div class="formControls col-4 in_block">
-            <input type="text" class="input-text" placeholder="请输入产品名称（20字内）" id="title" maxlength="20" />
+<div class="pd-20" style="padding:10px">
+    <div class="border">
+      <div class="box_shadow">
+        <div class="row cl block" style="margin-top:10px;">
+            <label class="form-label col-2 labels"><span class="c-red">*</span>产品名称：</label>
+            <div class="formControls col-4 in_block">
+                <input type="text" class="input-text" placeholder="请输入产品名称（20字内）" id="title" maxlength="20" />
+            </div>
+            <label class="form-label col-2 labels"><span class="c-red">*</span>产品状态：</label>
+            <div class="formControls col-10 in_block">
+                <input name="status" type="radio" value="1" style="margin-top:3px;cursor:pointer;" checked="checked" /> 募集中
+                <input name="status" type="radio" value="2" style="margin-top:3px;margin-left:20px;cursor:pointer;" /> 存续
+                <input name="status" type="radio" value="3" style="margin-top:3px;margin-left:20px;cursor:pointer;" /> 退出
+            </div>
         </div>
-        <label class="form-label col-2 labels"><span class="c-red">*</span>产品状态：</label>
-        <div class="formControls col-10 in_block">
-            <input name="status" type="radio" value="1" style="margin-top:3px;cursor:pointer;" checked="checked" /> 募集中
-            <input name="status" type="radio" value="2" style="margin-top:3px;margin-left:20px;cursor:pointer;" /> 存续
-            <input name="status" type="radio" value="3" style="margin-top:3px;margin-left:20px;cursor:pointer;" /> 退出
+        <div class="row cl block" style="margin-top:30px;">
+            <label class="form-label col-2 labels"><span class="c-red">*</span>成立日期：</label>
+            <div class="formControls col-10 in_block">
+                <input type="text" placeholder="请选择成立日期" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="establish_date" class="input-text Wdate">
+            </div>
+            <label class="form-label col-2 labels"><span class="c-red">*</span>管理人：</label>
+            <div class="formControls col-4 in_block">
+                <input type="text" class="input-text" placeholder="请输入管理人（20字内）" id="administrator" maxlength="20" />
+            </div>
         </div>
-    </div>
-    <div class="row cl block" style="margin-top:30px;">
-        <label class="form-label col-2 labels"><span class="c-red">*</span>成立日期：</label>
-        <div class="formControls col-10 in_block">
-            <input type="text" placeholder="请选择成立日期" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="establish_date" class="input-text Wdate">
+        <div class="row cl block" style="margin-top:30px;">
+            <label class="form-label col-2 labels"><span class="c-red">*</span>产品期限：</label>
+            <div class="formControls col-4 in_block">
+                <input type="text" class="input-text" placeholder="请输入产品期限" id="product_deadline" />
+            </div>
+            <label class="form-label col-2 labels"><span class="c-red">*</span>币种：</label>
+            <div class="formControls col-4 in_block">
+                <input type="text" class="input-text" placeholder="请输入币种（20字内）" id="currency" maxlength="20" />
+            </div>
         </div>
-        <label class="form-label col-2 labels"><span class="c-red">*</span>管理人：</label>
-        <div class="formControls col-4 in_block">
-            <input type="text" class="input-text" placeholder="请输入管理人（20字内）" id="administrator" maxlength="20" />
+        <div class="row cl block" style="margin-top:30px;">
+            <label class="form-label col-2 labels"><span class="c-red">*</span>投资范围：</label>
+            <div class="formControls col-4 in_block">
+                <input type="text" class="input-text" placeholder="请输入投资范围" id="investment_scope" />
+            </div>
+            <label class="form-label col-2 labels">托管机构：</label>
+            <div class="formControls col-4 in_block">
+                <input type="text" class="input-text" placeholder="请输入托管机构（20字内）" id="trusteeship_body" maxlength="20" />
+            </div>
         </div>
-    </div>
-    <div class="row cl block" style="margin-top:30px;">
-        <label class="form-label col-2 labels"><span class="c-red">*</span>产品期限：</label>
-        <div class="formControls col-4 in_block">
-            <input type="text" class="input-text" placeholder="请输入产品期限" id="product_deadline" />
-        </div>
-        <label class="form-label col-2 labels"><span class="c-red">*</span>币种：</label>
-        <div class="formControls col-4 in_block">
-            <input type="text" class="input-text" placeholder="请输入币种（20字内）" id="currency" maxlength="20" />
-        </div>
-    </div>
-    <div class="row cl block" style="margin-top:30px;">
-        <label class="form-label col-2 labels"><span class="c-red">*</span>投资范围：</label>
-        <div class="formControls col-4 in_block">
-            <input type="text" class="input-text" placeholder="请输入投资范围" id="investment_scope" />
-        </div>
-        <label class="form-label col-2 labels">托管机构：</label>
-        <div class="formControls col-4 in_block">
-            <input type="text" class="input-text" placeholder="请输入托管机构（20字内）" id="trusteeship_body" maxlength="20" />
-        </div>
-    </div>
-    <div class="row cl block" style="margin-top:30px;">
+     </div>
+     <div class="box_shadow">
+    <div class="row cl block" style="margin-top:10px;">
         <label class="form-label col-2 labels"><span class="c-red">*</span>认购费：</label>
         <div class="formControls col-4 in_block">
             <input type="text" class="input-text" placeholder="请输入认购费" id="subscription_fee" />
@@ -91,12 +116,14 @@
             <input type="text" class="input-text" placeholder="请输入外包服务费" id="outsourcing_service_fee" />
         </div>
     </div>
-    <div class="row cl" style="margin-top:80px;margin-left:30%;">
+    </div>
+    <div class="row cl" style="margin-top:30px;margin-left:20%;">
         <div class="col-10 col-offset-2">
             <button class="btn btn-primary radius" id="save_file" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
             <button class="btn btn-primary radius" onclick="layer_close()" type="button" style="margin-left:10px;"> 返回</button>
         </div>
     </div>
+ </div>
 </div>
 {include file="public/_footer" /}
 <script type="text/javascript">
