@@ -37,4 +37,8 @@ class Index extends Controller
         $this->assign("user_list",$user_list);
         return $this->fetch();
     }
+    public function login()
+    {
+        return $this->fetch();
+    }
 }
