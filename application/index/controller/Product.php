@@ -3,7 +3,6 @@ namespace app\index\controller;
 use app\index\model\ProductModel;
 use think\Controller;
 use think\Request;
-use think\View;
 
 class Product extends Controller
 {
@@ -18,6 +17,7 @@ class Product extends Controller
         $status = input("post.status");
         $title = input("post.title");
         $map = array();
+        $map['is_delete'] = ProductModel::IS_NOT_DELETE;
         if($status){
             $map['status'] = array('like','%'.$status.'%');
         }
@@ -74,5 +74,75 @@ class Product extends Controller
         }else{
             return $this->fetch();
         }
+    }
+
+    /**
+     * 修改产品
+     * @return mixed
+     * @auth sunjie
+     * @time 2017-05-13
+     */
+    public function product_save(){
+        $model = new ProductModel();
+        if(Request::instance()->isPost()){
+            $id = input("post.id");
+            $title = input("post.title");
+            $status = input("post.status");
+            $establish_date = input("post.establish_date");
+            $administrator = input("post.administrator");
+            $product_deadline = input("post.product_deadline");
+            $currency = input("post.currency");
+            $investment_scope = input("post.investment_scope");
+            $trusteeship_body = input("post.trusteeship_body");
+            $subscription_fee = input("post.subscription_fee");
+            $redemption_fee = input("post.redemption_fee");
+            $management_fee = input("post.management_fee");
+            $trust_fee = input("post.trust_fee");
+            $outsourcing_service_fee = input("post.outsourcing_service_fee");
+            $map = array();
+            $data = array();
+            $map['id'] = $id;
+            $data['title'] = $title;
+            $data['status'] = $status;
+            $data['establish_date'] = $establish_date;
+            $data['administrator'] = $administrator;
+            $data['product_deadline'] = $product_deadline;
+            $data['currency'] = $currency;
+            $data['investment_scope'] = $investment_scope;
+            $data['trusteeship_body'] = $trusteeship_body;
+            $data['subscription_fee'] = $subscription_fee;
+            $data['redemption_fee'] = $redemption_fee;
+            $data['management_fee'] = $management_fee;
+            $data['trust_fee'] = $trust_fee;
+            $data['outsourcing_service_fee'] = $outsourcing_service_fee;
+            $data['updatetime'] = date("Y-m-d H:i:s");
+            $result = $model->saveProduct($map,$data);
+            return $result;
+        }else{
+            $id = input("get.id");
+            $map = array();
+            $map['id'] = $id;
+            $product_detail = $model->getOne($map);
+            $this->assign("product_detail",$product_detail);
+            $this->assign("id",$id);
+            return $this->fetch();
+        }
+    }
+
+    /**
+     * 删除产品
+     * @return mixed
+     * @auth sunjie
+     * @time 2017-05-13
+     */
+    public function product_delete(){
+        $model = new ProductModel();
+        $id = input("post.id");
+        $map = array();
+        $data = array();
+        $map['id'] = $id;
+        $data['is_delete'] = ProductModel::IS_DELETE;
+        $result = $model->deleteProduct($map,$data);
+        return $result;
     }
 }

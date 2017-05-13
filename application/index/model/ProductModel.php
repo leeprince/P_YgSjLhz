@@ -15,6 +15,9 @@ class ProductModel extends Model
 
     const STATUS_KNOWN = '未知状态';
 
+    const IS_DELETE = 'Y';
+    const IS_NOT_DELETE = 'N';
+
     /**
      * 获取产品状态文案
      * @param $status
@@ -80,4 +83,47 @@ class ProductModel extends Model
         return $return;
     }
 
+    /**
+     * 修改产品
+     * @param $map
+     * @return array|false|\PDOStatement|string|Model
+     * @auth sunjie
+     * @time 2017-05-13
+     */
+    public function getOne($map){
+        $product_detail = db($this->tableName)->where($map)->find();
+        return $product_detail;
+    }
+
+    public function saveProduct($map,$data){
+        $result = db($this->tableName)->where($map)->update($data);
+        if($result){
+            $return['code'] = 200;
+            $return['msg'] = '修改成功';
+        }else{
+            $return['code'] = 300;
+            $return['msg'] = '修改失败，请重试';
+        }
+        return $return;
+    }
+
+    /**
+     * 删除产品
+     * @param $map
+     * @param $data
+     * @return mixed
+     * @auth sunjie
+     * @time 2017-05-13
+     */
+    public function deleteProduct($map,$data){
+        $result = db($this->tableName)->where($map)->update($data);
+        if($result){
+            $return['code'] = 200;
+            $return['msg'] = '删除成功';
+        }else{
+            $return['code'] = 300;
+            $return['msg'] = '删除失败，请重试';
+        }
+        return $return;
+    }
 }

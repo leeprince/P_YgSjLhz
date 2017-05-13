@@ -61,10 +61,14 @@
                             <a class="ml-5" style="padding-right:50px;" onClick="product_detail('产品详情','product_detail','','100%','100%')" href="javascript:" title="产品详情">查看</a>
                         </span>
                         <span style="border-right: 1px solid #000;">
-                            <a class="ml-5" style="padding-left:50px;padding-right:50px;" onClick="product_save('产品修改','product_save','','100%','100%')" href="javascript:" title="产品修改">修改</a>
+                            <a class="ml-5" style="padding-left:50px;padding-right:50px;" onClick="product_save('产品修改','product_save','{$product.id}','100%','100%')" href="javascript:" title="产品修改">修改</a>
                         </span>
                         <span>
-                            <a style="padding-left:50px;" class="ml-5" onclick="product_delete()" href="javascript:;" title="产品删除">删除</a>
+                            <?php if($product['status'] == 1 || $product['status'] == 2){ ?>
+                                <a style="padding-left:50px;color:#ccc;text-decoration: none;" class="ml-5" href="#" title="产品删除">删除</a>
+                            <?php }else{ ?>
+                                <a style="padding-left:50px;" class="ml-5" onclick="product_delete('{$product.id}')" href="javascript:;" title="产品删除">删除</a>
+                            <?php } ?>
                         </span>
                     </td>
                 </tr>
@@ -105,7 +109,7 @@
         var index = layer.open({
             type: 2,
             title: title,
-            content: url,
+            content: url + '?id=' + id,
             end: function () {
                 location.reload();
             }
@@ -113,16 +117,30 @@
         layer.full(index);
     }
 
-    function product_delete(){
+    function product_delete(id){
         layer.confirm('确定要删除吗？', {
             btn: ['确定','取消'] //按钮
         }, function(){
-            layer.msg('的确很重要', {icon: 1});
+            var url = 'product_delete';
+            var load = layer.load(3);
+            $.post(url,{
+                id:id
+            },function(rt){
+                if(rt){
+                    if(rt.code == 200){
+                        layer.msg(rt.msg,{icon:1,time:1000},function(){
+                            location.reload();
+                        })
+                    }else{
+                        layer.msg(rt.msg,{icon:2,time:2000});
+                    }
+                }else{
+                    layer.msg("删除失败",{icon:2,time:2000})
+                }
+            },'json');
+            layer_close(load);
         }, function(){
-            layer.msg('也可以这样', {
-                time: 20000, //20s后自动关闭
-                btn: ['明白了', '知道了']
-            });
+
         });
     }
 

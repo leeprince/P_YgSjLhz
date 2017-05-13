@@ -53,9 +53,9 @@
             </div>
             <label class="form-label col-2 labels"><span class="c-red">*</span>产品状态：</label>
             <div class="formControls col-10 in_block">
-                <input name="status" type="radio" value="1" style="margin-top:3px;cursor:pointer;" checked="checked" /> 募集中
-                <input name="status" type="radio" value="2" style="margin-top:3px;margin-left:20px;cursor:pointer;" /> 存续
-                <input name="status" type="radio" value="3" style="margin-top:3px;margin-left:20px;cursor:pointer;" /> 退出
+                <input name="status" type="radio" value="1" style="margin-top:3px;cursor:pointer;" checked="checked"> 募集中
+                <input name="status" type="radio" value="2" style="margin-top:3px;margin-left:20px;cursor:pointer;"> 存续
+                <input name="status" type="radio" value="3" style="margin-top:3px;margin-left:20px;cursor:pointer;"> 退出
             </div>
         </div>
         <div class="row cl block" style="margin-top:30px;">
@@ -119,7 +119,7 @@
     </div>
     <div class="row cl" style="margin-top:30px;margin-left:20%;">
         <div class="col-10 col-offset-2">
-            <button class="btn btn-primary radius" id="save_file" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
+            <button class="btn btn-primary radius" id="save_file" type="button"><i class="Hui-iconfont">&#xe632;</i> 创建</button>
             <button class="btn btn-primary radius" onclick="layer_close()" type="button" style="margin-left:10px;"> 返回</button>
         </div>
     </div>
@@ -131,7 +131,7 @@
         var index = parent.layer.getFrameIndex(window.name);
         $("#save_file").click(function(){
             var title = $("#title").val();
-            var status = $("input[name='status']").val();
+            var status = $("input[name='status']:checked").val();
             var establish_date = $("#establish_date").val();
             var administrator = $("#administrator").val();
             var product_deadline = $("#product_deadline").val();
@@ -156,6 +156,7 @@
             ){
                 layer.msg('必填项不可为空',{icon:2,time:2000});
             }else{
+                var load = layer.load(3);
                 var url = 'product_add';
                 $.post(url,{
                     title:title,
@@ -174,7 +175,7 @@
                 },function(rt){
                     if(rt){
                         if(rt.code == 200){
-                            layer.msg('添加成功',{icon:1,time:1000},function(){
+                            layer.msg(rt.msg,{icon:1,time:1000},function(){
                                 parent.location.reload();
                                 parent.layer.close(index);
                             })
@@ -185,6 +186,7 @@
                         layer.msg('添加失败，请重试',{icon:2,time:2000});
                     }
                 },'json');
+                layer_close(load);
             }
         });
 

@@ -74,5 +74,10 @@ ALTER TABLE `dev_product`
 ADD COLUMN `createtime`  datetime NULL DEFAULT NULL COMMENT '创建时间' AFTER `outsourcing_service_fee`,
 ADD COLUMN `updatetime`  datetime NULL DEFAULT NULL COMMENT '更新时间' AFTER `createtime`;
 
+ALTER TABLE `dev_product`
+ADD COLUMN `is_delete`  enum('Y','N') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'N' COMMENT '是否已删除' AFTER `outsourcing_service_fee`;
+
+
+
 
 
