@@ -49,8 +49,9 @@
       <div class="row cl">
      <label class="form-label col-xs-3" ><i class="Hui-iconfont">验证码:</i></label>
         <div class="formControls col-xs-8 " style="padding-right:0;">
-          <input class="input-text size-L" type="text" placeholder="验证码" onblur="if(this.value==''){this.value='验证码:'}" onclick="if(this.value=='验证码:'){this.value='';}" value="" style="width:120px;float: left">
-          {:captcha_img()} <!-- <a id="kanbuq" href="javascript:;">看不清，换一张</a> </div> -->
+          <input class="input-text size-L" type="text" placeholder="验证码" value="" style="width:120px;float: left">
+          <img src="{:captcha_src()}" alt="captcha" onclick="this.src='{:captcha_src()}?'+new Date().getTime();" />
+          <!-- {:captcha_img()} -->
           <!-- <img src="__PUBLIC__/VerifyCode.aspx.png"> --> <!-- <a id="kanbuq" href="javascript:;">看不清，换一张</a> </div> -->
         </div>
          </div>
@@ -69,7 +70,7 @@
       </div> -->
       <div class="row cl" >
         <div class="formControls col-xs-8 col-xs-offset-3" >
-          <input style="margin-right: 10px" name="" type="submit" class="login btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
+          <input style="margin-right: 10px" name="" type="button" class="login btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
           <input name="" type="reset" class="cancel btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
         </div>
       </div>
@@ -101,7 +102,11 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
                 status == '' ||
                 password == ''
             ){
-                layer.msg('用户名和密码不能为空',{icon:2,time:2000});
+                layer.msg('用户名和密码不能为空',{icon:2,time:2000},function(){
+                                layer_close(load);
+                                parent.location.reload();
+                                parent.layer.close(index);
+                            })
             }else{
                 layer.msg('用户名和密码都填了',{icon:2,time:2000});
             }
