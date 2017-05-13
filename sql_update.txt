@@ -78,6 +78,23 @@ ALTER TABLE `dev_product`
 ADD COLUMN `is_delete`  enum('Y','N') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'N' COMMENT '是否已删除' AFTER `outsourcing_service_fee`;
 
 
+>>>>>>>>>>登录 _201705132238 _leeprince>>>>>>>>>>>>>>>>>>>>>>>
+
+DROP TABLE IF EXISTS `dev_account`;
+CREATE TABLE `dev_account` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `account` varchar(12) NOT NULL COMMENT '帐号',
+  `password` varchar(255) NOT NULL COMMENT '密码',
+  `last_login_date` datetime NOT NULL COMMENT '最后登录的时间',
+  `update_date` datetime NOT NULL COMMENT '更新密码时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO `dev_account` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2017-05-14 05:09:59', '0000-00-00 00:00:00');
+
+
+
+
 
 
 
