@@ -13,7 +13,7 @@
 <script type="text/javascript" src="lib/PIE_IE678.js"></script>
 <![endif]-->
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/MDJ/static/h-ui/css/H-ui.min.css" />
-<link href="__PUBLIC__/css/login.css?1.36" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/css/login.css?1.69" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/MDJ/static/h-ui.admin/css/style.css" />
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/MDJ/lib/Hui-iconfont/1.0.7/iconfont.css" />
 <!--[if IE 6]>
@@ -30,29 +30,37 @@
   <img src="__PUBLIC__/img/logo.png" alt="">
   <span class="logo_label">后台管理系统</span>
 </div>
-<div class="loginWraper">
-  <div id="loginform" class="loginBox">
+<div class="loginWraper ">
+  <div id="loginform" class="loginBox col-xs-8 col-xs-offset-7">
    <p class="login_label"><b>登录</b></p>
     <form class="form form-horizontal" action="index.html" method="post">
       <div class="row cl">
-        <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
+        <label class="form-label col-xs-3"><i class="Hui-iconfont">账号:</i></label>
         <div class="formControls col-xs-8">
           <input id="uesrname" name="" type="text" placeholder="请输入账号" class="input-text size-L">
         </div>
       </div>
       <div class="row cl">
-        <label class="form-label col-xs-3" ><i class="Hui-iconfont">&#xe60e;</i></label>
+        <label class="form-label col-xs-3" ><i class="Hui-iconfont">密码:</i></label>
         <div class="formControls col-xs-8">
           <input id="password" name="" type="password" placeholder="请输入密码" class="input-text size-L">
         </div>
       </div>
       <div class="row cl">
-        <div class="formControls col-xs-8 col-xs-offset-3">
-          <input class="input-text size-L" type="text" placeholder="验证码" onblur="if(this.value==''){this.value='验证码:'}" onclick="if(this.value=='验证码:'){this.value='';}" value="验证码:" style="width:150px;">
+     <label class="form-label col-xs-3" ><i class="Hui-iconfont">验证码:</i></label>
+        <div class="formControls col-xs-8 " style="padding-right:0;">
+          <input class="input-text size-L" type="text" placeholder="验证码" onblur="if(this.value==''){this.value='验证码:'}" onclick="if(this.value=='验证码:'){this.value='';}" value="" style="width:120px;float: left">
           {:captcha_img()} <!-- <a id="kanbuq" href="javascript:;">看不清，换一张</a> </div> -->
           <!-- <img src="__PUBLIC__/VerifyCode.aspx.png"> --> <!-- <a id="kanbuq" href="javascript:;">看不清，换一张</a> </div> -->
+        </div>
+         </div>
+      <div style="clear: both"></div>
+      <div class="row cl" >
+        <div class="formControls col-xs-8 col-xs-offset-3" ">
+         <a href="#" class="back_password">忘记密码</a>
+        </div>
       </div>
-     <!--  <div class="row cl">
+      <!-- <div class="row cl">
         <div class="formControls col-xs-8 col-xs-offset-3">
           <label for="online">
             <input type="checkbox" name="online" id="online" value="">
@@ -60,15 +68,16 @@
         </div>
       </div> -->
       <div class="row cl" >
-        <div class="formControls col-xs-8 col-xs-offset-3" style="margin-top: 15px;">
-          <input style="margin-right: 10px" name="" type="submit" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
-          <input name="" type="reset" class="btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
+        <div class="formControls col-xs-8 col-xs-offset-3" >
+          <input style="margin-right: 10px" name="" type="submit" class="login btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
+          <input name="" type="reset" class="cancel btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
         </div>
       </div>
     </form>
   </div>
 </div>
 <div class="footer">Copyright 中鼎鑫</div>
+{include file="public/_footer" /}
 <!-- <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>  -->
 <script>
@@ -81,6 +90,23 @@ var _hmt = _hmt || [];
 })();
 var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
 document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F080836300300be57b7f34f4b3e97d911' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var index = parent.layer.getFrameIndex(window.name);
+        $(".login").click(function(){
+            var uesrname = $("#uesrname").val();
+            var password = $("#password").val();
+            if(uesrname == '' ||
+                status == '' ||
+                password == ''
+            ){
+                layer.msg('用户名和密码不能为空',{icon:2,time:2000});
+            }else{
+                layer.msg('用户名和密码都填了',{icon:2,time:2000});
+            }
+        });
+    })
 </script>
 </body>
 </html>
