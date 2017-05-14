@@ -143,6 +143,7 @@ return [
         '__PUBLIC__'=>'/static',
         '__URL__'=>'index.php/index',
         '__ROOT__' => '/',
+        '__WEIXIN__' => '/index.php/weixin',
     ],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',

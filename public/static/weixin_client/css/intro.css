@@ -1,0 +1,41 @@
+body{
+  padding:10px 0;
+}
+header{
+          /*width: 100%;*/
+          border-bottom: 1px solid #e0e0e0;
+          padding:5px;
+        }
+          .ui-reddot{
+            display: block;
+            margin-top: 5px;
+            margin-left: 10px;
+            height:90%; 
+            float: left;
+
+          }
+          .ui-reddot:after{
+            background-color: rgb(180,38,50);
+
+          }
+          .title{
+            margin-left: 25px;
+            display: block;
+          }
+          .intro_head{
+            padding:10px 20px
+          }
+          .intro_list{
+            text-indent: 2em;margin-bottom: 10px
+          }
+          .img_infos{
+            text-align: center
+          }
+          .img_detail{
+            width:80%;
+            margin:0 auto;
+            display: block;
+          }
+          .img_txt{
+            color:#b0b0b0;font-size: 12px;line-height: 20px
+          }
