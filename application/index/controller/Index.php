@@ -5,7 +5,7 @@ use app\index\model\User;
 use think\Controller;
 use think\View;
 
-class Index extends Controller
+class Index extends Common
 {
     /**
      * 首页

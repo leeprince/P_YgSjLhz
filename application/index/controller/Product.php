@@ -4,7 +4,7 @@ use app\index\model\ProductModel;
 use think\Controller;
 use think\Request;
 
-class Product extends Controller
+class Product extends Common
 {
     /**
      * 产品列表

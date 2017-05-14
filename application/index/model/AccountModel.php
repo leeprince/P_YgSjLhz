@@ -19,6 +19,10 @@ class AccountModel extends Model
 		}else{
 			$update = db($this->tableName)->where($verify_password)->update($udpate_time);
 			$return = 'success';
+			$user_detail = db($this->tableName)->where($verify_password)->find();
+            //用户信息写入session
+            session('user_id',$user_detail['id']);
+            session('user_name',$user_detail['account']);
 			// $return['msg'] = '登录成功';
 		}
 		return $return;

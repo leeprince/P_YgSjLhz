@@ -5,7 +5,7 @@ use think\Controller;
 use think\Request;
 use app\index\model\AccountModel;
 
-class Account extends Controller
+class Account extends Base
 {
 
 	/*login _leeprince_20170513*/
@@ -30,6 +30,9 @@ class Account extends Controller
 			}
 			return $result;
 		}else{
+		    //清空用户session
+            session('user_id',null);
+            session('user_name',null);
 			return $this -> fetch();
 		}
 	}

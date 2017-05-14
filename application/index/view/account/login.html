@@ -101,7 +101,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
               $.post(url,{
                 account:account,
                 password:password,
-                captchaVerify:captchaVerify,
+                captchaVerify:captchaVerify
               },function(result){
                 console.log(result);
                 if(result == 'captcha-error'){
@@ -111,8 +111,9 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
                 }else if(result == 'password-error'){
                   layer.msg('请输入正确的密码',{icon:2,time:1000});
                 }else{
-                  layer.msg('登录成功',{icon:1,time:1000});
-                  location.href = jumpUrl;
+                  layer.msg('登录成功',{icon:1,time:1000},function(){
+                      location.href = jumpUrl;
+                  });
                 }
                 $("#captcha").attr("src", '{:captcha_src()}?'+new Date().getTime());
               },'json');
