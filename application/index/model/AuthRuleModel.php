@@ -1,6 +1,12 @@
 <?php
 namespace app\index\model;
 use think\Model;
+
+/**
+ * 权限模型
+ * Class AuthRuleModel
+ * @package app\index\model
+ */
 class AuthRuleModel extends Model
 {
     protected $tableName = 'auth_rule';

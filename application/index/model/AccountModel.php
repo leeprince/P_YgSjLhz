@@ -1,8 +1,12 @@
 <?php 
 namespace app\index\model;
-
 use think\Model;
 
+/**
+ * 登录模型
+ * Class AccountModel
+ * @package app\index\model
+ */
 class AccountModel extends Model
 {
 	protected $tableName = 'account';

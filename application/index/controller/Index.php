@@ -1,10 +1,16 @@
 <?php
 namespace app\index\controller;
+use app\index\model\AccountRoleModel;
 use app\index\model\AuthRuleModel;
 use app\index\model\User;
 use think\Controller;
 use think\View;
 
+/**
+ * 首页控制器
+ * Class Index
+ * @package app\index\controller
+ */
 class Index extends Common
 {
     /**
@@ -15,8 +21,17 @@ class Index extends Common
      */
     public function index()
     {
+        $model_account_role = new AccountRoleModel();
         $model_rule = new AuthRuleModel();
+        //根据登录用户ID获取左导航列表
+        $user_id = $this->user_id;
+        $map_role = array();
+        $map_role['ar.account_id'] = $user_id;
+        $role_rule = $model_account_role->getRoleRule($map_role);
         $map = array();
+        if("*" != $role_rule['rules']){
+            $map['id'] = array('in',$role_rule['rules']);
+        }
         $map['is_menu'] = AuthRuleModel::IS_MENU;
         $rule_list = $model_rule->getRuleList($map);
         $this->assign("rule_list",$rule_list);

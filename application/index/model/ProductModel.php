@@ -1,6 +1,12 @@
 <?php
 namespace app\index\model;
 use think\Model;
+
+/**
+ * 产品管理模型
+ * Class ProductModel
+ * @package app\index\model
+ */
 class ProductModel extends Model
 {
     protected $tableName = 'product';

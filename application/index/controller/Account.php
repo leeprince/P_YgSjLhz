@@ -1,10 +1,14 @@
 <?php 
 namespace app\index\controller;
-
 use think\Controller;
 use think\Request;
 use app\index\model\AccountModel;
 
+/**
+ * 登录控制器
+ * Class Account
+ * @package app\index\controller
+ */
 class Account extends Base
 {
 

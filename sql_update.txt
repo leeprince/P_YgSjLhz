@@ -94,6 +94,47 @@ INSERT INTO `dev_account` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc
 
 
 
+===============孙捷=========角色表、角色用户关联表================0514=============
+
+CREATE TABLE `dev_role` (
+`id`  int(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+`title`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '角色名称' ,
+`rules`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '角色权限ID（逗号分隔）' ,
+`createtime`  datetime NULL DEFAULT NULL COMMENT '创建时间' ,
+`updatetime`  datetime NULL DEFAULT NULL COMMENT '更新时间' ,
+PRIMARY KEY (`id`)
+)
+ENGINE=MyISAM
+COMMENT='角色表'
+CHECKSUM=0
+DELAY_KEY_WRITE=0
+;
+
+CREATE TABLE `dev_account_role` (
+`id`  int(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+`account_id`  int(10) NULL DEFAULT NULL COMMENT '用户ID' ,
+`role_id`  int(10) NULL DEFAULT NULL COMMENT '角色ID' ,
+`createtime`  datetime NULL DEFAULT NULL COMMENT '创建时间' ,
+`updatetime`  datetime NULL DEFAULT NULL COMMENT '更新时间' ,
+PRIMARY KEY (`id`)
+)
+ENGINE=MyISAM
+COMMENT='角色用户关联表'
+CHECKSUM=0
+DELAY_KEY_WRITE=0
+;
+
+INSERT INTO `dev_account_role` VALUES ('1', '1', '1', '2017-05-14 23:15:19', '2017-05-14 23:15:21');
+
+INSERT INTO `dev_role` VALUES ('1', '超级管理员', '*', '2017-05-14 23:14:49', '2017-05-14 23:14:51');
+
+
+
+
+
+
+
+
 
 
 

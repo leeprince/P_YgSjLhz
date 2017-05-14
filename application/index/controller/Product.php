@@ -4,6 +4,11 @@ use app\index\model\ProductModel;
 use think\Controller;
 use think\Request;
 
+/**
+ * 产品控制器
+ * Class Product
+ * @package app\index\controller
+ */
 class Product extends Common
 {
     /**

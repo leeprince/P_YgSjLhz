@@ -2,6 +2,11 @@
 namespace app\index\controller;
 use think\Controller;
 
+/**
+ * 公共控制器
+ * Class Common
+ * @package app\index\controller
+ */
 class Common extends Base
 {
     public $user_id;    //用户id
