@@ -25,6 +25,7 @@ class Index extends Common
         $model_rule = new AuthRuleModel();
         //根据登录用户ID获取左导航列表
         $user_id = $this->user_id;
+        $user_name = $this->user_name;
         $map_role = array();
         $map_role['ar.account_id'] = $user_id;
         $role_rule = $model_account_role->getRoleRule($map_role);
@@ -35,6 +36,8 @@ class Index extends Common
         $map['is_menu'] = AuthRuleModel::IS_MENU;
         $rule_list = $model_rule->getRuleList($map);
         $this->assign("rule_list",$rule_list);
+        $this->assign("role_name",$role_rule['title']);
+        $this->assign("user_name",$user_name);
         return $this->fetch();
     }
 

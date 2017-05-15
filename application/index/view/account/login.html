@@ -6,8 +6,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<!-- {include file="public/_meta"}
-{include file="public/_header"} -->
 <!--[if lt IE 9]>
 <script type="text/javascript" src="lib/html5.js"></script>
 <script type="text/javascript" src="lib/respond.min.js"></script>
@@ -111,15 +109,21 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
                 }else if(result == 'password-error'){
                   layer.msg('请输入正确的密码',{icon:2,time:1000});
                 }else{
-                  layer.msg('登录成功',{icon:1,time:1000},function(){
-                      location.href = jumpUrl;
-                  });
+                  location.href = jumpUrl;
                 }
                 $("#captcha").attr("src", '{:captcha_src()}?'+new Date().getTime());
               },'json');
             }
         });
-    })
+    });
+
+    $(function () {
+        $("body").keydown(function (event) {
+            if (event.which == "13") {
+                $(".login").click();
+            }
+        });
+    });
 </script>
 </body>
 </html>

@@ -20,7 +20,7 @@ class AccountRoleModel extends Model
      */
     public function getRoleRule($map){
         $role_rule = db($this->tableName)->alias("ar")
-            ->field("r.rules")
+            ->field("r.title,r.rules")
             ->join("role r","r.id = ar.role_id","LEFT")
             ->where($map)->find();
         return $role_rule;
