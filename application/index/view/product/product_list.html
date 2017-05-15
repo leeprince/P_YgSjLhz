@@ -3,6 +3,28 @@
 <head>
     {include file="public/_meta"}
     <title>客户列表</title>
+    <style type="text/css">
+    .header{
+        margin-top: 10px; 
+        margin-bottom: 20px;
+    }
+       .add_btn{
+        width: 10px;
+        float: left;
+        background-color: #fff;
+        border: none;
+        margin-top: 0;
+         margin-top: 10px; 
+        margin-bottom: 20px;
+        margin-right: 20px;
+       }
+       #order_list_form{
+        width: 90%;
+        float: left;
+         margin-top: 10px; 
+        margin-bottom: 20px;
+       }
+    </style>
 </head>
 <body>
 <nav class="breadcrumb">
@@ -12,37 +34,40 @@
     <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
 </nav>
 <div class="page-container">
-    <form method="post" action="" id="order_list_form" onsubmit="layer.load(3);">
-        <table style="text-align:left;">
-            <tr style="width:100px;height:45px;f">
-                <td style="width:1%;text-align:right;padding-right:10px;">
-                    产品状态：
-                </td>
-                <td style="width:1%;padding-right:10px;">
-                    <span class="select-box inline" style="width:100%;border-radius:4px;">
-                        <select name="status" class="select" style="width:100%;">
-                            <option value="">请选择产品状态</option>
-                            <option value="1" <?php if($status == 1) echo 'selected' ?>>募集中</option>
-                            <option value="2" <?php if($status == 2) echo 'selected' ?>>续存</option>
-                            <option value="3" <?php if($status == 3) echo 'selected' ?>>退出</option>
-                        </select>
-                    </span>
-                </td>
-                <td style="width:5%;">
-                    <span><input type="text" value="{$title}" name="title" class="input-text" style="width:50%;border-radius:4px;" placeholder="请输入产品名称搜索"></span>
-                </td>
-            </tr>
-        </table>
-        <button style="display:none;" name="btn_search" class="btn btn-success" id="product_list_sreach"><i class="Hui-iconfont">&#xe665;</i> 查询</button>
-    </form>
-    <div class="cl pd-5 bg-1 bk-gray mt-20">
+<div class="header">
+ <div class="add_btn cl pd-5 bg-1 bk-gray mt-20">
         <span class="l">
             <a class="btn btn-primary radius" data-title="添加产品" onclick="product_add('创建产品','product_add','','100%','100%')" href="javascript:void(0);">
                 <i class="Hui-iconfont">&#xe600;</i> 添加产品
             </a>
         </span>
-    </div>
-    <div class="mt-20">
+  </div>
+ <form method="post" action="" id="order_list_form" onsubmit="layer.load(3);">
+    <table style="text-align:left;">
+        <tr style="width:100px;height:45px;f">
+            <td style="width:1%;text-align:right;padding-right:10px;">
+                产品状态：
+            </td>
+            <td style="width:1%;padding-right:10px;">
+                <span class="select-box inline" style="width:100%;border-radius:4px;">
+                    <select name="status" class="select" style="width:100%;">
+                        <option value="">请选择产品状态</option>
+                        <option value="1" <?php if($status == 1) echo 'selected' ?>>募集中</option>
+                        <option value="2" <?php if($status == 2) echo 'selected' ?>>续存</option>
+                        <option value="3" <?php if($status == 3) echo 'selected' ?>>退出</option>
+                    </select>
+                </span>
+            </td>
+            <td style="width:5%;">
+                <span><input type="text" value="{$title}" name="title" class="input-text" style="width:50%;border-radius:4px;" placeholder="请输入产品名称搜索"></span>
+            </td>
+        </tr>
+    </table>
+    <button style="display:none;" name="btn_search" class="btn btn-success" id="product_list_sreach"><i class="Hui-iconfont">&#xe665;</i> 查询</button>
+ </form> 
+ </div>
+   
+    <div class="mt-20" style="margin-top: 20px">
         <table class="table table-border table-bordered table-bg table-hover table-sort">
             <thead>
             <tr class="text-c">
