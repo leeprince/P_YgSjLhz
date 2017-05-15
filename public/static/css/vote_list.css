@@ -1,0 +1,55 @@
+ .mt-20 table{
+          width: 94%;
+          margin:0 auto;
+      }
+      .mt-20 table th{
+          color:rgb(176,27,47);
+          font-size: 14px;
+          border-bottom: 2px solid rgb(176,39,52);
+      }
+      .page-container a{
+        background-color: rgb(255,255,255);
+        border-color: rgb(176,39,52);
+        color: rgb(176,39,52);
+      }
+      .page-container a:hover{
+        background-color: rgb(176,39,52);
+        border-color: rgb(176,39,52);
+        opacity: .9;
+      }
+      .status_label{
+        margin-left: 
+        line-height: 31px;
+      }
+      .select_tab{
+        width: 80px;
+        height: 30px;
+        margin-top: 2px;
+        padding-left: 5px;
+        /*background-color: #ddd;*/
+      }
+      .search_txt{
+        height: 30px;
+        /*margin-top: 1px;*/
+        width: 160px;
+        box-sizing:border-box;
+        border:1px solid #ddd;
+        padding-left: 5px;
+        margin-left: 30px;
+        margin-right: 20px;
+      }
+      .serach_btn{
+        width: 45px;
+        height: 30px;
+        background-color: rgb(179,39,52);
+        color: #fff;
+        border:none;
+        border-radius: 2px;
+      }
+      .ml-5{
+        color: rgb(65,135,220);
+        text-decoration: underline;
+      }
+      .del{
+        color: rgb(179,39,52);
+      }

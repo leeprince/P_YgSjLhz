@@ -3,6 +3,8 @@
 <head>
     {include file="public/_meta"}
     <title>投票列表</title>
+    <link href="__PUBLIC__/css/vote_list.css?" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 <nav class="breadcrumb">
@@ -18,27 +20,57 @@
                 <i class="Hui-iconfont">&#xe600;</i> 创建投票
             </a>
         </span>
+        <span class="status_label col-md-offset-5">状态：</span>
+        <select class="select_tab" name="" id="">
+          <option value="eq">状态1</option>
+          <option value="eq">状态2</option>
+          <option value="eq">状态3</option>
+        </select>
+        <input type="text" class="search_txt" placeholder="请输入标题搜素">
+        <button class="serach_btn">搜索</button>
     </div>
-    <table style="text-align:left;">
-        <tr style="width:100px;height:45px;f">
-            <td style="width:1%;text-align:right;padding-right:10px;">
-                产品状态：
-            </td>
-            <td style="width:1%;padding-right:10px;">
-                <span class="select-box inline" style="width:100%;border-radius:4px;">
-                    <select name="status" class="select" style="width:100%;">
-                        <option value="">状态</option>
-                        <option value="1" >募集中</option>
-                        <option value="2" >续存</option>
-                        <option value="3" >退出</option>
-                    </select>
-                </span>
-            </td>
-            <td style="width:5%;">
-                <span><input type="text" name="title" class="input-text" style="width:50%;border-radius:4px;" placeholder="请输入产品名称搜索"></span>
-            </td>
-        </tr>
-    </table>
+</div>
+
+<div class="mt-20">
+        <table class="table table-border table-bordered table-bg table-hover">
+            <thead>
+            <tr class="text-c">
+                <th width="200">标题</th>
+                <th width="100">状态</th>
+                <th width="100">发送人</th>
+                <th width="100">开始时间</th>
+                <th width="100">结束时间</th>
+                <th width="100">答题数量</th>
+                <th width="200">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+          
+                <tr class="text-c">
+                    <td>qwe</td>
+                    <td>qew</td>
+                    <td>qew</td>
+                    <td>qew</td>
+                    <td>qew</td>
+                    <td>
+                        <a class="ml-5" href="javascript:" title="答卷数量">6</a>
+                    </td>
+                    <td>
+                        <span style="border-right: 1px solid #000;">
+                            <a class="ml-5" style="padding-right:10px;"  href="javascript:" title="产品详情">查看</a>
+                        </span>
+                        <span style="border-right: 1px solid #000;">
+                            <a class="ml-5" style="padding-left:10px;"  href="javascript:" title="产品修改">修改</a>
+                        </span>
+                        <span>
+                            <a style="padding-left:10px;" class="ml-5 del"  href="javascript:;" title="产品删除">删除</a>
+                           
+                        </span>
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
 </div>
 {include file="public/_footer" /}
 <script type="text/javascript">
