@@ -130,6 +130,67 @@ INSERT INTO `dev_role` VALUES ('1', '超级管理员', '*', '2017-05-14 23:14:49', '2
 
 
 
+=============孙捷===================客户表=====================0515=====================
+
+CREATE TABLE `dev_customer` (
+`id`  int(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+`title`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '客户名称' ,
+`type`  enum('2','1') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '客户类型，1 个人  2 机构' ,
+`card_type`  enum('6','5','4','3','2','1') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '证件类型 1 身份证 2 营业执照 3 护照 4 台胞回乡证 5 港澳通行证 6 其他' ,
+`card_no`  varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '证件号码' ,
+`telephone`  varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号码' ,
+`createtime`  datetime NULL DEFAULT NULL COMMENT '创建时间' ,
+`updatetime`  datetime NULL DEFAULT NULL COMMENT '更新时间' ,
+PRIMARY KEY (`id`)
+)
+ENGINE=MyISAM
+COMMENT='客户表'
+CHECKSUM=0
+DELAY_KEY_WRITE=0
+;
+
+
+
+=================孙捷==================左导航更改=================0515=================
+
+DROP TABLE IF EXISTS `dev_auth_rule`;
+CREATE TABLE `dev_auth_rule` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL COMMENT '导航名称',
+  `iframe_url` varchar(255) DEFAULT NULL COMMENT '跳转链接',
+  `is_menu` enum('Y','N') DEFAULT NULL,
+  `pid` int(10) DEFAULT NULL COMMENT '父级ID',
+  `icon` varchar(10) DEFAULT NULL COMMENT '图标编码',
+  `createtime` datetime DEFAULT NULL COMMENT '创建时间',
+  `updatetime` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='左导航信息';
+
+-- ----------------------------
+-- Records of dev_auth_rule
+-- ----------------------------
+INSERT INTO `dev_auth_rule` VALUES ('1', '应用管理', null, 'Y', '0', '&#xe62e;', '2017-05-12 15:26:39', '2017-05-12 15:26:41');
+INSERT INTO `dev_auth_rule` VALUES ('2', '公司简介', '', 'Y', '0', '&#xe616;', '2017-05-12 15:27:32', '2017-05-12 15:27:34');
+INSERT INTO `dev_auth_rule` VALUES ('3', '客户管理', null, 'Y', '0', '&#xe60d;', '2017-05-12 15:28:03', '2017-05-12 15:28:06');
+INSERT INTO `dev_auth_rule` VALUES ('4', '产品管理', '', 'Y', '0', '&#xe620;', '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('5', '新闻管理', '', 'Y', '0', '&#xe616;', '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('6', '通知管理', '', 'Y', '0', '&#xe622;', '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('7', '投票管理', null, 'Y', '0', '&#xe61a;', '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('8', '应用设置', null, 'N', '1', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('9', '客户列表', null, 'N', '3', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('10', '产品列表', 'index.php/index/product/product_list', 'N', '4', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('11', '新闻列表', null, 'N', '5', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('12', '通知列表', null, 'N', '6', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('13', '投票列表', null, 'N', '7', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('14', '答卷列表', null, 'N', '7', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('15', '公司简介', null, 'N', '2', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('16', '调研管理', null, 'Y', '0', '&#xe61a;', '2017-05-15 22:24:23', '2017-05-15 22:24:26');
+INSERT INTO `dev_auth_rule` VALUES ('17', '调研列表', null, 'N', '16', null, '2017-05-15 22:25:33', '2017-05-15 22:25:36');
+INSERT INTO `dev_auth_rule` VALUES ('18', '答卷列表', null, 'N', '16', null, '2017-05-15 22:25:53', '2017-05-15 22:25:55');
+
+
+
+
 
 
 
