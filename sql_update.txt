@@ -231,8 +231,32 @@ DELAY_KEY_WRITE=0
 ;
 
 
+>>>>>>>>>>>>>>>>>>>>>>侧边栏>>>>>>>>>leeprince_201705160028>>>>>>>>>>>>>>>>>>>>
 
 
+-- ----------------------------
+-- Records of dev_auth_rule
+-- ----------------------------
+INSERT INTO `dev_auth_rule` VALUES ('1', '应用管理', null, 'Y', '0', '&#xe62e;', '2017-05-12 15:26:39', '2017-05-12 15:26:41');
+INSERT INTO `dev_auth_rule` VALUES ('2', '公司简介', '', 'Y', '0', '&#xe681;', '2017-05-12 15:27:32', '2017-05-12 15:27:34');
+INSERT INTO `dev_auth_rule` VALUES ('3', '客户管理', null, 'Y', '0', '&#xe60d;', '2017-05-12 15:28:03', '2017-05-12 15:28:06');
+INSERT INTO `dev_auth_rule` VALUES ('4', '产品管理', '', 'Y', '0', '&#xe620;', '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('5', '新闻管理', '', 'Y', '0', '&#xe616;', '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('6', '通知管理', '', 'Y', '0', '&#xe622;', '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('7', '投票管理', null, 'Y', '0', '&#xe634;', '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('8', '应用设置', null, 'N', '1', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('9', '客户列表', null, 'N', '3', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('10', '产品列表', 'index.php/index/product/product_list', 'N', '4', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('11', '新闻列表', null, 'N', '5', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('12', '通知列表', null, 'N', '6', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('13', '投票列表', 'index.php/index/vote/vote_list', 'N', '7', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('14', '答卷列表', 'index.php/index/vote/answer_list', 'N', '7', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('15', '公司简介', null, 'N', '2', null, '2017-05-12 15:29:21', '2017-05-12 15:29:21');
+INSERT INTO `dev_auth_rule` VALUES ('16', '调研管理', null, 'Y', '0', '&#xe692;', '2017-05-15 22:24:23', '2017-05-15 22:24:26');
+INSERT INTO `dev_auth_rule` VALUES ('17', '调研列表', 'index.php/index/research/research_list', 'N', '16', null, '2017-05-15 22:25:33', '2017-05-15 22:25:36');
+INSERT INTO `dev_auth_rule` VALUES ('18', '答卷列表', 'index.php/index/research/research_answer_list', 'N', '16', null, '2017-05-15 22:25:53', '2017-05-15 22:25:55');
+INSERT INTO `dev_auth_rule` VALUES ('19', '投资记录', null, 'Y', '0', '&#xe627;', '2017-05-16 00:10:42', '2017-05-16 00:10:45');
+INSERT INTO `dev_auth_rule` VALUES ('20', '投资列表', 'index.php/index/investment/investment_list', 'N', '19', '', '2017-05-16 00:11:20', '2017-05-16 00:11:23');
 
 
 
