@@ -191,6 +191,50 @@ INSERT INTO `dev_auth_rule` VALUES ('18', '答卷列表', null, 'N', '16', null, '20
 
 
 
+===========孙捷==============短信验证码=====================0515==================
+
+CREATE TABLE `dev_phone_msg_code` (
+`id`  int(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+`phone`  varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电话号码' ,
+`code`  varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '验证码' ,
+`content`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '短信内容' ,
+`createtime`  datetime NULL DEFAULT NULL COMMENT '创建时间' ,
+`updatetime`  datetime NULL DEFAULT NULL COMMENT '更新时间' ,
+`expiretime`  varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '到期时间（时间戳）' ,
+PRIMARY KEY (`id`)
+)
+ENGINE=MyISAM
+COMMENT='短信验证码'
+CHECKSUM=0
+DELAY_KEY_WRITE=0
+;
+
+
+=============孙捷===========投资表=================0515======================
+
+CREATE TABLE `dev_investment` (
+`id`  int(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+`customer_id`  int(10) NULL DEFAULT NULL COMMENT '客户ID' ,
+`product_id`  int(10) NULL DEFAULT NULL COMMENT '产品ID' ,
+`investment_money`  varchar(20) NULL ,
+`opening_bank`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '开户银行' ,
+`bank_code`  varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '银行账号' ,
+`investment_date`  date NULL DEFAULT NULL COMMENT '投资日期' ,
+`createtime`  datetime NULL DEFAULT NULL COMMENT '创建时间' ,
+`updatetime`  datetime NULL DEFAULT NULL COMMENT '更新时间' ,
+PRIMARY KEY (`id`)
+)
+ENGINE=MyISAM
+COMMENT='投资表'
+CHECKSUM=0
+DELAY_KEY_WRITE=0
+;
+
+
+
+
+
+
 
 
 
