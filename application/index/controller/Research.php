@@ -3,15 +3,15 @@ namespace app\index\controller;
 
 use think\Controller;
 
-class Vote extends Common
+class Research extends Common
 {
 
-	public function vote_list(){
+	public function research_list(){
 
 		return $this->fetch();
 	}
 
-	public function answer_list(){
+	public function research_answer_list(){
 		
 		return $this->fetch();
 	}
