@@ -259,6 +259,122 @@ INSERT INTO `dev_auth_rule` VALUES ('19', '投资记录', null, 'Y', '0', '&#xe627;'
 INSERT INTO `dev_auth_rule` VALUES ('20', '投资列表', 'index.php/index/investment/investment_list', 'N', '19', '', '2017-05-16 00:11:20', '2017-05-16 00:11:23');
 
 
+>>>>>>>>>>>>>>>>>>>>>投票管理; >>>>>>>>>>>>>>>>>>>>>>>leeprince_201705161824>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for dev_account
+-- ----------------------------
+DROP TABLE IF EXISTS `dev_account`;
+CREATE TABLE `dev_account` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL COMMENT '账户名字',
+  `account` varchar(12) NOT NULL COMMENT '帐号',
+  `password` varchar(255) NOT NULL COMMENT '密码',
+  `last_login_date` datetime DEFAULT NULL COMMENT '最后登录的时间',
+  `update_date` datetime DEFAULT NULL COMMENT '更新密码时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='admin登录表';
+
+-- ----------------------------
+-- Records of dev_account
+-- ----------------------------
+INSERT INTO `dev_account` VALUES ('1', 'add', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2017-05-16 10:56:28', '0000-00-00 00:00:00');
+
+
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for dev_customer
+-- ----------------------------
+DROP TABLE IF EXISTS `dev_customer`;
+CREATE TABLE `dev_customer` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL COMMENT '客户名称',
+  `type` enum('2','1') DEFAULT NULL COMMENT '客户类型，1 个人  2 机构',
+  `card_type` enum('6','5','4','3','2','1') DEFAULT NULL COMMENT '证件类型 1 身份证 2 营业执照 3 护照 4 台胞回乡证 5 港澳通行证 6 其他',
+  `card_no` varchar(50) DEFAULT NULL COMMENT '证件号码',
+  `telephone` varchar(11) DEFAULT NULL COMMENT '手机号码',
+  `createtime` datetime DEFAULT NULL COMMENT '创建时间',
+  `updatetime` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='客户表';
+
+
+-- ----------------------------
+-- Table structure for dev_vote
+-- ----------------------------
+DROP TABLE IF EXISTS `dev_vote`;
+CREATE TABLE `dev_vote` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `account_id` int(11) NOT NULL COMMENT '发送人(操作人)',
+  `title` varchar(255) NOT NULL COMMENT '标题',
+  `status` int(2) NOT NULL COMMENT '投票状态:0=>正常;1=>暂停:2=>结束',
+  `is_start` tinyint(1) unsigned zerofill NOT NULL COMMENT '是否指定开始时间',
+  `is_end` tinyint(1) unsigned zerofill NOT NULL COMMENT '是否指定结束时间',
+  `strat_time` datetime NOT NULL COMMENT '投票开始时间',
+  `end_time` datetime NOT NULL COMMENT '投票结束时间',
+  `cover_img_url` varchar(255) NOT NULL COMMENT '封面图片链接',
+  `summary` varchar(255) NOT NULL COMMENT '摘要',
+  `description` varchar(255) NOT NULL COMMENT '描述',
+  `end_msg` varchar(255) DEFAULT NULL COMMENT '结束语,有默认值',
+  `before_show_num` tinyint(1) unsigned zerofill NOT NULL COMMENT '显示票数',
+  `before_show_stripe` tinyint(1) unsigned zerofill NOT NULL COMMENT '显示条状图',
+  `before_show_pre` tinyint(1) unsigned zerofill NOT NULL COMMENT '显示得票百分比',
+  `before_number` tinyint(1) unsigned zerofill NOT NULL COMMENT '总投票人次设置',
+  `before_views` tinyint(1) unsigned zerofill NOT NULL COMMENT '总访问量设置',
+  `after_show_num` tinyint(1) unsigned zerofill NOT NULL COMMENT '(投票后)统计显示设置',
+  `after_show_stripe` tinyint(1) unsigned zerofill NOT NULL,
+  `after_show_pre` tinyint(1) unsigned zerofill NOT NULL,
+  `after_number` tinyint(1) unsigned zerofill NOT NULL COMMENT '总投票人次设置',
+  `after_views` tinyint(1) unsigned zerofill NOT NULL COMMENT '总访问量设置',
+  `end_show_num` tinyint(1) unsigned zerofill NOT NULL COMMENT '(投票截止)统计显示设置',
+  `end_show_sripe` tinyint(1) unsigned zerofill NOT NULL,
+  `end_show_pre` tinyint(1) unsigned zerofill NOT NULL,
+  `end_number` tinyint(1) unsigned zerofill NOT NULL COMMENT '总投票人次设置',
+  `end_views` tinyint(1) unsigned zerofill NOT NULL COMMENT '总访问量设置',
+  `rank_condition` int(2) unsigned zerofill NOT NULL DEFAULT '00' COMMENT '排行榜显示条件:1=>''总是可以看'';1=>投票后或者投票截止后才可以看;2=>投票截止后可以看',
+  `equipment_is_daily` tinyint(1) unsigned zerofill NOT NULL DEFAULT '0' COMMENT '针对同一设备同一投票:0=>只能投,1=>每日投',
+  `equipment_num` int(11) NOT NULL COMMENT '针对同一设备同一投票允许投几次',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for dev_vote_answer
+-- ----------------------------
+DROP TABLE IF EXISTS `dev_vote_answer`;
+CREATE TABLE `dev_vote_answer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `vote_id` int(11) NOT NULL COMMENT '投票ID',
+  `type` int(2) NOT NULL COMMENT '问题类型:0=>单选;1=>多选',
+  `name` varchar(255) NOT NULL COMMENT '问题名称',
+  `is_must` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否为必答题',
+  `min_num` int(11) NOT NULL COMMENT '多选题最少设置',
+  `max_num` int(11) NOT NULL COMMENT '多选题最多设置',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for dev_vote_answer_set
+-- ----------------------------
+DROP TABLE IF EXISTS `dev_vote_answer_set`;
+CREATE TABLE `dev_vote_answer_set` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `answer_id` int(11) NOT NULL,
+  `option_setting` varchar(255) NOT NULL COMMENT '选项设置',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 
 
 
